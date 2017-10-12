@@ -2,6 +2,16 @@
 
 //front controller
 
+			/* DATE RESTRUCTURE
+			$string = '23-03-2001';
+
+			$pattern = '/([0-9]{2})-([0-9]{2})-([0-9]{4})/';
+			$replacement = 'Year $3, month $2, day $1';
+
+			echo preg_replace($pattern, $replacement, $string);
+
+			die;*/
+
 
 
 //settings
