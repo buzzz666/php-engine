@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700");
+
+body {
+  font-family: Montserrat;
+}
+
+h1{
+	font-weight: 500;
+	font-size: 32px;
+}
+
+h2{
+	font-weight: 400;
+	font-size: 24px;
+}
+
+p{
+	font-weight: 300;
+	font-size: 14px;
+}
+
+.post{
+	background-color: #BBB;
+}
+
+.article-date{
+	margin-bottom: 20px;
+}
+
+.content{
+	margin-bottom: 20px;
+}
+
+.image img{
+	width: 400px;
+	margin-bottom: 20px;
+}

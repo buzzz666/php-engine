@@ -10,13 +10,12 @@ class NewsController
 	
 	public function actionIndex()
 	{
-		echo "News articles list";\
+		echo "News articles list";
 
-		var_dump(News::getNewsList());
 		$newsList = array();
 		$newsList = News::getNewsList();
 
-		var_dump($newsList);
+		require_once(ROOT . '/views/news/index.php');
 
 		return true;
 	}
@@ -25,9 +24,12 @@ class NewsController
 	{
 		if($id){
 			echo "Single article<br>";
+			
 			$newsItem = News::getNewsItemById($id);
 
-			echo $newsItem;
+			require_once(ROOT . '/views/news/article.php');
+
+			return true;
 		}		
 
 		return true;
