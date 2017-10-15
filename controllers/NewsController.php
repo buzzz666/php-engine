@@ -10,8 +10,6 @@ class NewsController
 	
 	public function actionIndex()
 	{
-		echo "News articles list";
-
 		$newsList = array();
 		$newsList = News::getNewsList();
 
@@ -23,8 +21,6 @@ class NewsController
 	public function actionView($id)
 	{
 		if($id){
-			echo "Single article<br>";
-			
 			$newsItem = News::getNewsItemById($id);
 
 			require_once(ROOT . '/views/news/article.php');
