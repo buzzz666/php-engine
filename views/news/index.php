@@ -15,7 +15,7 @@
 			<nav class="fright">
 				<ul>
 					<li><a href="index.html">Home</a></li>
-					<li><a href="about.html">About</a></li>
+					<li><a href="/news/">News</a></li>
 				</ul>
 				<ul>
 					<li><a href="works.html">Works</a></li>
