@@ -10,7 +10,7 @@ body {
   font-family: 'Roboto', sans-serif;
   background:;
   position: relative;
-  font-weight:400px;
+  font-weight: 400px;
 }
 
 ul li {
@@ -669,6 +669,15 @@ ul.sub-menu {
   text-transform: uppercase;
   position: relative;
   z-index:3;
+}
+
+.catalog-aside h2{
+  transition: 0.5s;
+}
+
+.catalog-aside h2:hover{
+  transition: 0.5s;
+  color: #888;
 }
 
 .left-sidebar h2:after, h2.title:after{

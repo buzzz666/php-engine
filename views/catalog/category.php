@@ -33,12 +33,15 @@
 						</div>
 
 					<?php endforeach; ?>	
-
-				</div><!--features_items-->
-
-				<?php include ROOT . '/views/layout/recommended.php' ?>
-
+					
+				</div>
 			</div>
+
+			<!-- PAGINATION -->
+			<div class="col-sm-9 col-sm-push-3 padding-right">
+				<?php echo $pagination->get(); ?>
+			</div>
+
 		</div>
 	</div>
 </section>

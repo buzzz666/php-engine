@@ -1,6 +1,8 @@
 <div class="col-sm-3">
 	<div class="left-sidebar">
-		<h2>Каталог</h2>
+		<a href="/catalog/" class="catalog-aside">
+			<h2>Каталог</h2>
+		</a>
 		<div class="panel-group category-products">
 			<?php foreach ($categories as $categoryItem): ?>
 				<div class="panel panel-default">

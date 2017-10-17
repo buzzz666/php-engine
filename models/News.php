@@ -1,8 +1,5 @@
 <?php
 
-/**
-* 
-*/
 class News
 {
 	//Returns single news item with specified id
