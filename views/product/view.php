@@ -1,6 +1,6 @@
 <?php include ROOT . '/views/layout/header.php' ?>
 
-<section>
+<section class="full-height">
     <div class="container">
         <div class="row">
             <?php include ROOT . '/views/layout/aside.php' ?>

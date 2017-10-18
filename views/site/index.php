@@ -1,6 +1,6 @@
 <?php include ROOT . '/views/layout/header.php' ?>
 
-<section>
+<section class="full-height">
 	<div class="container">
 		<div class="row">
 			
@@ -17,13 +17,13 @@
 								<div class="single-products">
 									<div class="productinfo text-center">
 										<img src="/template/images/home/product1.jpg" alt="" />
-										<h2>$<?php echo $productItem['price'] ?></h2>
+										<h2>$<?php echo $productItem['price']; ?></h2>
 										<p>
-											<a href="/product/<?php echo $productItem['id'] ?>">
-												<?php echo $productItem['name'] ?>
+											<a href="/product/<?php echo $productItem['id']; ?>">
+												<?php echo $productItem['name']; ?>
 											</a>											
 										</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
+										<a href="#" data-id="<?php echo $productItem['id']; ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
 									</div>
 									<?php if ($productItem['is_new']): ?>
 										<img src="/template/images/home/new.png" alt="new" class="new">

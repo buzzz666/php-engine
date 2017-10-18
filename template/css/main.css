@@ -268,6 +268,9 @@ a#scrollUp i{
   background-position: 130px;
 }
 
+.full-height{
+  min-height: calc(100vh - 247px);
+}
 
 /*  Dropdown menu*/
 
@@ -566,7 +569,6 @@ ul.sub-menu {
 /*************************
 ******* Home ******
 **************************/
-
 
 #slider {
   padding-bottom: 45px;
@@ -966,6 +968,23 @@ h2.title {
 }
 
 .add-to-cart:hover {
+  background: #FE980F;
+  border: 0 none;
+  border-radius: 0;
+  color: #FFFFFF;
+}
+
+.default-button {
+  background:#F5F5ED;
+  border: 0 none;
+  border-radius: 0;
+  color: #696763;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  margin-bottom: 25px;
+}
+
+.default-button:hover {
   background: #FE980F;
   border: 0 none;
   border-radius: 0;
@@ -1446,12 +1465,8 @@ h2.title {
   overflow: hidden;
 }
 
-.login-form {
-
-}
-
-.signup-form {
-
+.signup-form h5{
+  margin-bottom: 20px;
 }
 
 .login-form h2, .signup-form h2 {
@@ -2534,4 +2549,6 @@ h2.title {
   color: #FE980F;
 }
 
-
+.panel-group a:hover{
+  color: #FE980F !important;
+}
