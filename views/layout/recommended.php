@@ -14,7 +14,7 @@
 						<div class="product-image-wrapper">
 							<div class="single-products">
 								<div class="productinfo text-center">
-									<img src="/template/images/home/recommend1.jpg" alt="" />
+									<img src="<?= Product::getImage($product['id']); ?>" alt="" />
 									<h2>$<?= $product['price']; ?></h2>
 									<p>
 										<a href="/product/<?= $product['id']; ?>">
