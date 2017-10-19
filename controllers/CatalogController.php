@@ -11,6 +11,9 @@ class CatalogController
         $latestProducts = array();
         $latestProducts = Product::getLatestProducts(20);
 
+        $relatedProducts = array();
+        $relatedProducts = Product::getRelatedProducts();
+
         require_once(ROOT . '/views/catalog/index.php');
 
         return true;
@@ -23,6 +26,9 @@ class CatalogController
         
         $categoryProducts = array();
         $categoryProducts = Product::getProductsListByCategory($categoryId, $page);
+
+        $relatedProducts = array();
+        $relatedProducts = Product::getRelatedProducts();
 
         $total = Product::getTotalProductsInCategory($categoryId);
 

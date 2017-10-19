@@ -83,6 +83,16 @@ class User{
 		return false;
 	}
 
+	public static function checkPhone($phone){
+
+		$phone = preg_replace('/[^0-9]/', '', $phone);
+
+		if(strlen($phone) >= 10 && strlen($phone) <= 12){
+			return true;
+		}
+		return false;
+	}
+
 	public static function checkEmailExists($email){
 
 		$db = Db::getConnection();

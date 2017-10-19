@@ -11,6 +11,9 @@ class ProductController
         
         $product = Product::getProductById($productId);
 
+        $relatedProducts = array();
+		$relatedProducts = Product::getRelatedProducts();
+
         require_once(ROOT . '/views/product/view.php');
 
         return true;

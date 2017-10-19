@@ -11,6 +11,9 @@ class SiteController
 		$latestProducts = array();
 		$latestProducts = Product::getLatestProducts(9);
 
+		$relatedProducts = array();
+		$relatedProducts = Product::getRelatedProducts();
+
 		require_once(ROOT . '/views/site/index.php');
 
 		return true;
@@ -36,7 +39,9 @@ class SiteController
 			}
 
 			if ($errors == false) {
-				$adminEmail = 'buzzz666666@gmail.com';
+				$adminInfo = include(ROOT . '/config/admin_info.php');
+
+				$adminEmail = $adminInfo['email'];
 				$message = "Текст письма:\n {$userText}. \nОт {$userEmail}";
 				$subject = '';
 				$result = mail($adminEmail, $subject, $message);

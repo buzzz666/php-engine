@@ -10,7 +10,7 @@ class Product
         $db = Db::getConnection();
         $productsList = array();
 
-        $result = $db->query('SELECT id, name, price, image, is_new FROM product '
+        $result = $db->query('SELECT id, name, price, is_new FROM product '
                 . 'WHERE status = "1"'
                 . 'ORDER BY id DESC '                
                 . 'LIMIT ' . $count);
@@ -20,13 +20,34 @@ class Product
         while ($row = $result->fetch()) {
             $productsList[$i]['id'] = $row['id'];
             $productsList[$i]['name'] = $row['name'];
-            $productsList[$i]['image'] = $row['image'];
             $productsList[$i]['price'] = $row['price'];
             $productsList[$i]['is_new'] = $row['is_new'];
             $i++;
         }
 
         return $productsList;
+    }
+
+    public static function getRelatedProducts(){
+
+        $db = Db::getConnection();
+        $relatedList = array();
+
+        $result = $db->query('SELECT id, name, price, is_new FROM product '
+                . 'WHERE status = "1" AND is_recommended = "1" '
+                . 'ORDER BY id DESC');
+
+        $i = 0;
+
+        while ($row = $result->fetch()) {
+            $relatedList[$i]['id'] = $row['id'];
+            $relatedList[$i]['name'] = $row['name'];
+            $relatedList[$i]['price'] = $row['price'];
+            $relatedList[$i]['is_new'] = $row['is_new'];
+            $i++;
+        }
+
+        return $relatedList;
     }
 
     public static function getProductsListByCategory($categoryId = false, $page = 1, $count = self::SHOW_BY_DEFAULT){
@@ -37,7 +58,7 @@ class Product
             $db = Db::getConnection();
             $productsList = array();
 
-            $result = $db->query("SELECT id, name, price, image, is_new FROM product "
+            $result = $db->query("SELECT id, name, price, is_new FROM product "
                     . "WHERE status = '1' AND category_id = '$categoryId' "
                     . "ORDER BY id DESC "
                     . "LIMIT " . $count
@@ -48,7 +69,6 @@ class Product
             while ($row = $result->fetch()) {
                 $productsList[$i]['id'] = $row['id'];
                 $productsList[$i]['name'] = $row['name'];
-                $productsList[$i]['image'] = $row['image'];
                 $productsList[$i]['price'] = $row['price'];
                 $productsList[$i]['is_new'] = $row['is_new'];
                 $i++;
@@ -106,6 +126,59 @@ class Product
         $row = $result->fetch();
 
         return $row['count'];
+    }
+
+    public static function getProductsList(){
+
+        $db = Db::getConnection();
+
+        $result = $db->query('SELECT id, name, price, code FROM product ORDER BY id ASC');
+        $productsList = array();
+        $i = 0;
+        while ($row = $result->fetch()) {
+            $productsList[$i]['id'] = $row['id'];
+            $productsList[$i]['name'] = $row['name'];
+            $productsList[$i]['code'] = $row['code'];
+            $productsList[$i]['price'] = $row['price'];
+            $i++;
+        }
+        return $productsList;
+    }
+
+    public static function deleteProductById($id){
+
+        $db = Db::getConnection();
+
+        $sql = 'DELETE FROM product WHERE id = :id';
+
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+
+        return $result->execute();
+    }
+
+    public static function createProduct($options){
+
+        $db = Db::getConnection();
+
+        $sql = 'INSERT INTO product (name, code, price, category_id, brand, availability, description, is_new, is_recommended, status) VALUES (:name, :code, :price, :category_id, :brand, :availability, :description, :is_new, :is_recommended, :status)';
+
+        $result = $db->prepare($sql);
+        $result->bindParam(':name', $options['name'], PDO::PARAM_STR);
+        $result->bindParam(':code', $options['code'], PDO::PARAM_STR);
+        $result->bindParam(':price', $options['price'], PDO::PARAM_STR);
+        $result->bindParam(':category_id', $options['category_id'], PDO::PARAM_STR);
+        $result->bindParam(':brand', $options['brand'], PDO::PARAM_STR);
+        $result->bindParam(':availability', $options['availability'], PDO::PARAM_STR);
+        $result->bindParam(':description', $options['description'], PDO::PARAM_STR);
+        $result->bindParam(':is_new', $options['is_new'], PDO::PARAM_STR);
+        $result->bindParam(':is_recommended', $options['is_recommended'], PDO::PARAM_STR);
+        $result->bindParam(':status', $options['status'], PDO::PARAM_STR);
+        if ($result->execute()) {
+            return $db->lastInsertId();
+        }
+
+        return 0;
     }
 }
 

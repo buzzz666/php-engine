@@ -3,83 +3,37 @@
 
 	<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
 		<div class="carousel-inner">
-			<div class="item active">	
-				<div class="col-sm-4">
-					<div class="product-image-wrapper">
-						<div class="single-products">
-							<div class="productinfo text-center">
-								<img src="/template/images/home/recommend1.jpg" alt="" />
-								<h2>$56</h2>
-								<p>Easy Polo Black Edition</p>
-								<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
-							</div>
+			<div class="item active">
 
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="product-image-wrapper">
-						<div class="single-products">
-							<div class="productinfo text-center">
-								<img src="/template/images/home/recommend2.jpg" alt="" />
-								<h2>$56</h2>
-								<p>Easy Polo Black Edition</p>
-								<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
+				<?php $counter = 1; ?>
+				<?php foreach ($relatedProducts as $product): ?>
+					<?php if ($counter%3 == 1 && $counter != 1): ?>
+			<div class="item">
+					<?php endif ?>
+					<div class="col-sm-4">
+						<div class="product-image-wrapper">
+							<div class="single-products">
+								<div class="productinfo text-center">
+									<img src="/template/images/home/recommend1.jpg" alt="" />
+									<h2>$<?= $product['price']; ?></h2>
+									<p>
+										<a href="/product/<?= $product['id']; ?>">
+											<?= $product['name']; ?>
+										</a>											
+									</p>
+									<a href="#"  data-id="<?= $product['id']; ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
+								</div>
+								<?php if ($product['is_new']): ?>
+									<img src="/template/images/home/new.png" alt="new" class="new">
+								<?php endif; ?>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="product-image-wrapper">
-						<div class="single-products">
-							<div class="productinfo text-center">
-								<img src="/template/images/home/recommend3.jpg" alt="" />
-								<h2>$56</h2>
-								<p>Easy Polo Black Edition</p>
-								<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
-							</div>
-						</div>
-					</div>
-				</div>
+					<?php if ($counter%3 == 0): ?>
 			</div>
-			<div class="item">	
-				<div class="col-sm-4">
-					<div class="product-image-wrapper">
-						<div class="single-products">
-							<div class="productinfo text-center">
-								<img src="/template/images/home/recommend1.jpg" alt="" />
-								<h2>$56</h2>
-								<p>Easy Polo Black Edition</p>
-								<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="product-image-wrapper">
-						<div class="single-products">
-							<div class="productinfo text-center">
-								<img src="/template/images/home/recommend2.jpg" alt="" />
-								<h2>$56</h2>
-								<p>Easy Polo Black Edition</p>
-								<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="product-image-wrapper">
-						<div class="single-products">
-							<div class="productinfo text-center">
-								<img src="/template/images/home/recommend3.jpg" alt="" />
-								<h2>$56</h2>
-								<p>Easy Polo Black Edition</p>
-								<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
-							</div>
-
-						</div>
-					</div>
-				</div>
+					<?php endif; ?>
+					<?php $counter++; ?>
+				<?php endforeach ?>
 			</div>
 		</div>
 		<a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
@@ -89,4 +43,4 @@
 			<i class="fa fa-angle-right"></i>
 		</a>			
 	</div>
-				</div><!--/recommended_items-->
+</div><!--/recommended_items-->

@@ -12,12 +12,13 @@
 					
 					<?php if ($productsInCart): ?>
 						<p>Товары в корзине:</p>
-						<table class="table-bordered table-striped table">
+						<table class="table-bordered table-striped table cart-table">
 							<tr>
 								<th>Код товара</th>
 								<th>Название</th>
 								<th>Стоимость, $</th>
 								<th>Колличество, шт</th>
+								<th>Удалить</th>
 							</tr>
 							<?php foreach($products as $product): ?>
 								<tr>
@@ -29,6 +30,11 @@
 									</td>
 									<td><?php echo $product['price']; ?></td>
 									<td><?php echo $productsInCart[$product['id']]; ?></td>
+									<td>
+										<a href="/cart/delete/<?= $product['id']; ?>" class="delete-button">
+											<i class="fa fa-times fa-lg delete-button"></i>
+										</a>
+									</td>
 								</tr>
 							<?php endforeach; ?>
 							<tr>
@@ -36,6 +42,7 @@
 								<td><?php echo $totalPrice; ?></td>
 							</tr>
 						</table>
+						<a href="/cart/checkout" class="btn btn-default default-button">Оформить заказ</a>
 					<?php endif; ?>
 
 				</div>
