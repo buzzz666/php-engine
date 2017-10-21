@@ -73,7 +73,8 @@ class AdminProductController extends AdminBase{
         return true;
     }
 
-    public function actionUpdate($id){
+    public function actionUpdate($id)
+    {
 
         self::checkAdmin();
 
@@ -94,25 +95,15 @@ class AdminProductController extends AdminBase{
             $options['is_recommended'] = $_POST['is_recommended'];
             $options['status'] = $_POST['status'];
 
-            $errors = false;
+            if (Product::updateProductById($id, $options)) {
 
-            if (!isset($options['name']) || empty($options['name'])) {
-                $errors[] = 'Заполните поля';
+                if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
+
+                   move_uploaded_file($_FILES["image"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . "/upload/images/products/{$id}.jpg");
+                }
             }
-            if ($errors == false) {
 
-                $id = Product::createProduct($options);
-
-                if ($id) {
-
-                    if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
-
-                        move_uploaded_file($_FILES["image"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . "/upload/images/products/{$id}.jpg");
-                    }
-                };
-
-                header("Location: /admin/product");
-            }
+            header("Location: /admin/product");
         }
 
         require_once(ROOT . '/views/admin_product/update.php');

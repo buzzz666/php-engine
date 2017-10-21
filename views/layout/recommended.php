@@ -5,7 +5,7 @@
 		<div class="carousel-inner">
 			<div class="item active">
 
-				<?php $counter = 1; ?>
+				<?php $counter = 1; $closedFlag = false; ?>
 				<?php foreach ($relatedProducts as $product): ?>
 					<?php if ($counter%3 == 1 && $counter != 1): ?>
 			<div class="item">
@@ -29,12 +29,16 @@
 							</div>
 						</div>
 					</div>
+					<?php $closedFlag = false ?>
 					<?php if ($counter%3 == 0): ?>
 			</div>
+						<?php $closedFlag = true ?>
 					<?php endif; ?>
 					<?php $counter++; ?>
 				<?php endforeach ?>
+			<?php if (!$closedFlag): ?>
 			</div>
+			<?php endif; ?>
 		</div>
 		<a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
 			<i class="fa fa-angle-left"></i>
